@@ -9,7 +9,6 @@ namespace ESP8266_IoT {
 
     let wifi_connected: boolean = false
     let telloIP = "192.168.10.1"
-    let recvString = ""
     let commandPort = 8889
     let scanWIFIAPFlag = 0
     let currentCmd: Cmd = Cmd.None // tracks current code used
@@ -113,7 +112,7 @@ namespace ESP8266_IoT {
     export function initEsp(tx: SerialPin, rx: SerialPin, baudrate: BaudRate) {
         serial.redirect(tx, rx, BaudRate.BaudRate115200)
         basic.pause(100)
-        serial.setTxBufferSize(64)  // Adjusted
+        serial.setTxBufferSize(128)  // Adjusted
         serial.setRxBufferSize(256) // Adjusted
         restEsp8266()
     }
